@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade Calculator</title>
+    <!-- link-for-css -->
+    <!-- <link rel="stylesheet" href="./Grade.css" /> -->
+
+    <style>
+      .container {
+  /* border: 1px solid black; */
+  width: 70%;
+  height: 550px;
+  margin: 122px 217px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: -4px 4px 20px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -4px 4px 20px 6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 4px 20px 6px rgba(0, 0, 0, 0.75);
+}
+.cont {
+  border: 1px solid rgb(255, 255, 255);
+  width: 30%;
+  height: 550px;
+  background-color: rgb(97, 217, 207);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.cont p {
+  font-size: 1rem;
+  padding: 12px 23px;
+  font-weight: bold;
+}
+.cont h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.cont h2 {
+  color: rgb(85, 84, 84);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.cont-2 {
+  border: 1px solid rgb(255, 255, 255);
+  width: 70%;
+  height: 550px;
+  background-color: rgb(239, 245, 244);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.cont-2 input {
+  width: 90%;
+  border: 1px solid rgb(191, 191, 191);
+  height: 43px;
+  border-radius: 26px;
+  padding: 2px 11px;
+  font-size: 1rem;
+}
+.btn {
+  background-color: rgb(97, 217, 207);
+  border: 1px solid rgb(255, 251, 251);
+  width: 32%;
+  height: 60px;
+  border-radius: 45px;
+  color: black;
+  font-size: 1.3rem;
+}
+.btn:hover {
+  background-color: rgb(120, 243, 232);
+  cursor: pointer;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="cont">
+        <h1>Result</h1>
+        <p id="Result"></p>
+        <h2>Percentage</h2>
+        <p id="percentage"></p>
+        <h2>Grade</h2>
+        <p id="Grade"></p>
+        <h2>Total</h2>
+        <p id="Total"></p>
+      </div>
+      <div class="cont-2">
+        <input type="text" placeholder="C-Programming" id="cp" />
+        <input type="text" placeholder="Math" id="Ma" />
+        <input type="text" placeholder="Web-Development" id="Wd" />
+        <input type="text" placeholder="Software Design" id="Sd" />
+        <input type="text" placeholder="Arabic" id="Ab" />
+        <button class="btn" onclick="Calc()">Show Result</button>
+      </div>
+      <script>
+        function Calc() {
+          let cp = document.getElementById("cp").value;
+          let Ma = document.getElementById("Ma").value;
+          let Wd = document.getElementById("Wd").value;
+          let Sd = document.getElementById("Sd").value;
+          let Ab = document.getElementById("Ab").value;
+          let Grade = "";
+          // For Total
+          let total =
+            parseFloat(cp) +
+            parseFloat(Ma) +
+            parseFloat(Wd) +
+            parseFloat(Sd) +
+            parseFloat(Ab);
+          // For percentage
+          let Perc = (total / 500) * 100;
+          // For grade
+          if (Perc <= 100 && Perc >= 80) {
+            Grade = "A";
+          } else if (Perc <= 79 && Perc >= 60) {
+            Grade = "B";
+          } else if (Perc <= 59 && Perc >= 40) {
+            Grade = "C";
+          } else {
+            Grade = "F";
+          }
+
+          //   console.log(
+          //     `Your grade is ${Grade} and percentage is ${Perc}% and total is ${total}`
+          //   );
+
+          document.getElementById(
+            "Result"
+          ).innerHTML = `Your grade is ${Grade} and percentage is ${Perc}% and total is ${total}`;
+
+          document.getElementById('percentage').innerHTML=`${Perc}%`;
+          document.getElementById('Grade').innerHTML=`${Grade}`;
+          document.getElementById('Total').innerHTML=`${total}`;
+
+        }
+      </script>
+    </div>
+  </body>
+</html>
